@@ -1,0 +1,51 @@
+What is Git and why it is used?
+Git (/ɡɪt/) is a version control system for tracking changes in computer files and coordinating work on those files among multiple people. It is primarily used for source code management in software development, but it can be used to keep track of changes in any set of files.
+
+Basically, git is version control system that allows you to work together with other developers and all of you will be using the same codebase without looking for a ‘flashdrive’ to copy code from one computer to another. With git you can see what others are working on, you review their code without traveling a thousand miles, you can view your previous changes, you can rollback to your previous code, you can do a lot more than I myself don’t know. One might never know all the git commands because they are numerous but there are some that every developer is expected to know to be able to collaborate with other developers and those few commands are what you will be learning today, so get your mouse-pad ready to be ready to highlight
+
+First thing first
+
+if you are using a windows computer, download and install git here, if you using linux or Mac, you can do sudo apt-get install git.
+Now that you have git setup, navigate into one of your project or create a new project. To tell git that in need its service you need to initialize it. In your project directory on your terminal, type git init, you will receive a response that look like this:
+Initialized empty Git repository in
+/Users/mayomi.ayandiran/newProject/.git/
+Its created a .git hiding folder, this folder is where all the magic happens, it keeps track of all your files base on the commands that you use.
+
+Introduce to git commands:
+git add filename and git add .
+$ git add filename
+git add, let you add your files to git, when you write this command, it registers your file and it start tracking the file, so what if you have a lot of files in your project and you want to add them all once, Just do:
+$ git add .
+The period sign means you are telling git to add all the files in your current project directory, so with the little period sign it saves you all the work of adding your changes one by one.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+git commit
+Committing code simply means creating a new version and you definitely need something to identify this version and write a brief description of the version, when you hit enter on git commit you will see a vim or vi or nano or whatever, asking you enter your commit message. This message tells another developer that you are working together what you did.
+This is actually a better way to commit your changes just do this
+$ git commit -m ‘this is my message’
+and hit enter on your keyboard, that’s all. You have successfully committed your changes. if you got this unfriendly message below:
+Your name and email address were configured automatically based on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+$ git config -global user.name “Your Name”
+$ git config -global user.email you@example.com
+After doing this, you may fix the identity used for this commit with:
+$ git commit -amend -reset-author
+1 file changed, 0 insertions(+), 0 deletions(-)
+create mode 100644 index.js
+it has already been committed. It only informing you that you need to configure your username and email so that your messages can have your name attached to it.
+To do that, just follow this instruction:
+$ git config user.name ‘Mayomi’ 
+hit enter
+$ git config user.email ‘ayandiranmayomi@gmail.com’
+hit enter 
+
+If you add the -global to it, it will set your user.email and user.name permanently so you won’ t have to configure it again next time you are committing another project. Now try to amend the other commit so that it can have your name and email attached to it:
+$ git commit -amend -reset-author
+ [master 28c3e28] This is a new message
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+The hexadecimal code you see in front of the master is a unique id that can be used to identify your changes later. For every commit that you commit this unique id is always generated.
+quick tip:
+git add adds your modified files to the queue to be committed later. Files are not committed
+git commit commits the files that have been added and creates a new revision with a log... If you do not add any files, git will not commit anything. You can combine both actions with git commit -a
+3. for subsequence commits you can use
+$ git commit -am ‘this is another message’
+to add files and commit together
