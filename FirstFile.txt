@@ -1,0 +1,19 @@
+What is Git and why it is used?
+Git (/ɡɪt/) is a version control system for tracking changes in computer files and coordinating work on those files among multiple people. It is primarily used for source code management in software development, but it can be used to keep track of changes in any set of files.
+
+Basically, git is version control system that allows you to work together with other developers and all of you will be using the same codebase without looking for a ‘flashdrive’ to copy code from one computer to another. With git you can see what others are working on, you review their code without traveling a thousand miles, you can view your previous changes, you can rollback to your previous code, you can do a lot more than I myself don’t know. One might never know all the git commands because they are numerous but there are some that every developer is expected to know to be able to collaborate with other developers and those few commands are what you will be learning today, so get your mouse-pad ready to be ready to highlight
+
+First thing first
+
+if you are using a windows computer, download and install git here, if you using linux or Mac, you can do sudo apt-get install git.
+Now that you have git setup, navigate into one of your project or create a new project. To tell git that in need its service you need to initialize it. In your project directory on your terminal, type git init, you will receive a response that look like this:
+Initialized empty Git repository in
+/Users/mayomi.ayandiran/newProject/.git/
+Its created a .git hiding folder, this folder is where all the magic happens, it keeps track of all your files base on the commands that you use.
+
+Introduce to git commands:
+git add filename and git add .
+$ git add filename
+git add, let you add your files to git, when you write this command, it registers your file and it start tracking the file, so what if you have a lot of files in your project and you want to add them all once, Just do:
+$ git add .
+The period sign means you are telling git to add all the files in your current project directory, so with the little period sign it saves you all the work of adding your changes one by one.
