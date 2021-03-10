@@ -1,0 +1,167 @@
+What is Git and why it is used?
+Git (/ɡɪt/) is a version control system for tracking changes in computer files and coordinating work on those files among multiple people. It is primarily used for source code management in software development, but it can be used to keep track of changes in any set of files.
+
+Basically, git is version control system that allows you to work together with other developers and all of you will be using the same codebase without looking for a ‘flashdrive’ to copy code from one computer to another. With git you can see what others are working on, you review their code without traveling a thousand miles, you can view your previous changes, you can rollback to your previous code, you can do a lot more than I myself don’t know. One might never know all the git commands because they are numerous but there are some that every developer is expected to know to be able to collaborate with other developers and those few commands are what you will be learning today, so get your mouse-pad ready to be ready to highlight
+
+First thing first
+
+if you are using a windows computer, download and install git here, if you using linux or Mac, you can do sudo apt-get install git.
+Now that you have git setup, navigate into one of your project or create a new project. To tell git that in need its service you need to initialize it. In your project directory on your terminal, type git init, you will receive a response that look like this:
+Initialized empty Git repository in
+/Users/mayomi.ayandiran/newProject/.git/
+Its created a .git hiding folder, this folder is where all the magic happens, it keeps track of all your files base on the commands that you use.
+
+Introduce to git commands:
+git add filename and git add .
+$ git add filename
+git add, let you add your files to git, when you write this command, it registers your file and it start tracking the file, so what if you have a lot of files in your project and you want to add them all once, Just do:
+$ git add .
+The period sign means you are telling git to add all the files in your current project directory, so with the little period sign it saves you all the work of adding your changes one by one.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+git commit
+Committing code simply means creating a new version and you definitely need something to identify this version and write a brief description of the version, when you hit enter on git commit you will see a vim or vi or nano or whatever, asking you enter your commit message. This message tells another developer that you are working together what you did.
+This is actually a better way to commit your changes just do this
+$ git commit -m ‘this is my message’
+and hit enter on your keyboard, that’s all. You have successfully committed your changes. if you got this unfriendly message below:
+Your name and email address were configured automatically based on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+$ git config -global user.name “Your Name”
+$ git config -global user.email you@example.com
+After doing this, you may fix the identity used for this commit with:
+$ git commit -amend -reset-author
+1 file changed, 0 insertions(+), 0 deletions(-)
+create mode 100644 index.js
+it has already been committed. It only informing you that you need to configure your username and email so that your messages can have your name attached to it.
+To do that, just follow this instruction:
+$ git config user.name ‘Mayomi’ 
+hit enter
+$ git config user.email ‘ayandiranmayomi@gmail.com’
+hit enter 
+
+If you add the -global to it, it will set your user.email and user.name permanently so you won’ t have to configure it again next time you are committing another project. Now try to amend the other commit so that it can have your name and email attached to it:
+$ git commit -amend -reset-author
+ [master 28c3e28] This is a new message
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+The hexadecimal code you see in front of the master is a unique id that can be used to identify your changes later. For every commit that you commit this unique id is always generated.
+quick tip:
+git add adds your modified files to the queue to be committed later. Files are not committed
+git commit commits the files that have been added and creates a new revision with a log... If you do not add any files, git will not commit anything. You can combine both actions with git commit -a
+3. for subsequence commits you can use
+$ git commit -am ‘this is another message’
+to add files and commit together
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+git push:
+When you see developer talking, and you hear them saying something about pushing code, it simply means copying your code from your local git (the .git folder) to a remote repository. Now it seems we have a blocker here because we have not talked about this remote stuff. If there is no remote repository that we can push our code we would have to use flashdrive to copy this code. Well, thanks to company like github.com, gitlab.com , bitbucket.org and so on they have made our life easier as developers by providing a place to store our code. This is the repository.
+Create a free account with github.com if you don’t have one, please pause here and join us when you have created the account.
+
+git pull
+git pull will copy stuffs from your remote repo to your local repo, the reason why we need to do git pull here is because we initialize read.me when creating our repo, which mean we have some file remotely that are not on our local repo to balance this, we have to do git pull to copy the code on the remote repo to the local repo, hope you get that. the ‘origin master’ means which branch we are pull the code from.
+If you do that correctly you should now see a file named README.md magically in your code 😉 .
+Image for post
+you have to add the new file you pull from your remote pull and commit again
+so do:
+$ git add .
+$ git commit -m ‘my first push ‘
+now do 
+$ git push origin master
+You will be asked to login with your username and password, follow the instruction as it shows on your terminal.
+If you followed carefully you should have your code on github repo live already.
+Note that assuming you don’t initialize the README while creating your repo you can easily push it without doing the git pull.
+Few things to note:
+git push — To put your code on the remote server.
+git pull — To pull code from the remote server to your local
+Congratulation you just learnt git, so what next
+
+git branch
+Like a tree git have branches, these branches let you have a different version of the code in a separate place it is like having different code in different folders and you can switch from one folder to another. By default, master is your default branch that is why we git pull origin master the other time
+to create a new branch do:
+[TO CREATE A NEW BRANCH]:
+$ git branch mynewbranch
+[MOVE FROM ONE BRANCH TO ANOTHER]:
+$ git checkout mynewbranchname
+[TO CREATE A NEW BRANCH AND MOVE TO THE NEWLY CREATED BRANCH]:
+$ git checkout -b mynewbranchname
+[TO DELETE A BRANCH]: 
+[FIRST OF ALL, CHECKOUT TO A DIFFERENT BRANCH THEN DO]:
+$ git branch -d branchname
+ 
+[THIS WILL ONLY DELETE THE BRANCH LOCALLY BUT IF YOU WANT TO DELETE IT REMOTELY]
+Then do:
+$ git push -d origin branchname
+If you want to push to a new branch, you will do
+$ git push origin mynewbranchname
+
+MORE ON GIT — The story:
+Now you have been working on this your new app for the past few months and last night you added some new features. you commit your code and you sleep
+Image for post
+when you wake up, you wanted to run your app, but instead of running ‘its showing errors’. Now you are confused, you debug your code and your code refused to run… then you remember you were supposed to do a demo of the app for your client… and ‘you’ve promised the client heaven’. Well, you don’t have to panic too much, you just need to go back to your previous commits. The new feature is not running afterall.
+So how do you go back to your previous commit? That’s easy
+do
+$ git reflog
+It will show you a list of your previous commit
+look for a commit where your code runs, and copy the commit id
+then do
+$ git reset --hard 2a12122
+where 2a12122 is the commit id you copied from the git reflog list
+and that’s all.
+You can now happily demo your app.
+Resolving merge conflict
+Merge conflict usually occurs when different people work on the same file and the changes are not properly synchronized.
+const newThing = 1222;
+<<<<<<< HEAD
+const anotherThing = 13;
+=======
+const moreThings= 111;
+let anotherThing = 13;
+>>>>>>> branch-name
+The <<<<<HEAD
+tells you where your code begins
+======= is a marker that tells you what the other person that edited the file added to the file
+>>>>>>> branch-name , this is the name of the branch
+To resolve, just compare the two changes, for example in the above code snippet, the person having these conflict changed let to const, but the other person added the moreThings variable, so take out:
+let anotherThing = 13; 
+from the code and remove all the <<<<<HEAD =======
+>>>>>>>branch-name
+that’s all , commit your code and push, everything should be ok now.
+Resolving merge conflict might look simply here, but at times it becomes a decorated demon so be aware!s
+
+
+CONTRIBUTING TO OPEN SOURCE PROJECTS.
+Now that you understood git, you can now start contributing to open source projects.
+To contribute
+Look for an open source project that you would like to contribute to, let’s assume the project you wanted to contribute to is https://github.com/mayomi1/create-express-api-mvc.
+The first step is to fork this repo. To fork a fork just click on the fork button that you see on the repo page.
+Image for post
+After that,
+clone the repo you forked by clicking on the ‘clone or download’ button. You can either download the zip file and unzip the file or copy the link to the repository, paste it in your terminate and do
+$ git clone https:/github.com/name/repo-name
+[Hit enter to download the project to your computer]
+Image for post
+After that,
+Checkout to a new branch.
+Add your changes to the codebase.
+Now add the repository url of the person you are contributing to,
+git remote add upstream ‘destination_url’
+commit your code and push
+to push
+do
+$ git push -u origin {{your_new_branch_name}}
+now go the repo click on the branch and click on ‘new pull request’ and wait for the owner to respond.
+Finally, here are few more commands that you might you need,
+$ git status
+To view your uncommitted code, your current branch and other info.
+$ git stash
+use git stash when you want to leave a branch and you are not ready to commit your work.
+$ git stash pop
+After you returned to the branch you did git stash and you want to retrieve your previous work that you stashed, use git stash pop to retrieve them
+For more git commands check this repo https://github.com/Adetona/cool-git-commands
+Hope you have learnt something new ? 👍🏾👍🏾👍🏾👍🏾
+Thanks for reading.
+
+
+WRITTEN BY
+Mayomi Ayandiran
+Software Engineer — > twitter handle @mayomidele1
+
+
